@@ -16,26 +16,24 @@
 }
 
 .site-logo {
-	margin: 0;
-	margin-bottom: 1.5rem;
-	padding: 1rem;
-	font-weight: $font-weight-bolder;
+	padding: 2rem;
+	background: #f9f9fd;
 
-	a {
-		display: flex;
-		align-items: center;
+	h1 {
+		margin: 0 0 1rem 0;
 		color: $primary;
 		background-image: linear-gradient(to right, #fd746c 0%, #ff9068 51%, #fd746c 100%);
 		background-clip: text;
 		-webkit-background-clip: text;
 		-moz-background-clip: text;
+		font-weight: $font-weight-bolder;
 		-webkit-text-fill-color: transparent;
 		-moz-text-fill-color: transparent;
 	}
 }
 
 .scrollbar {
-	height: calc(100vh - 150px) !important;
+	height: calc(100vh - 162px) !important;
 }
 
 .nav-links {

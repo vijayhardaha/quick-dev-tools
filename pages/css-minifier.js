@@ -1,9 +1,10 @@
 /**
  * External dependancies
  */
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import { useClipboard } from 'xooks';
 import { useState } from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { minify } from 'csso';
 
 /**
  * Internal dependancies
@@ -12,16 +13,15 @@ import Meta from '../lib/meta';
 import Sidebar from '../lib/sidebar';
 import CopyCodeButton from '../lib/copy-btn';
 
-export default function Minifier() {
+export default function CSSMinifier() {
 	const clipboard = useClipboard({ timeout: 500 });
 	const [text, setText] = useState('');
 
-	const showResults = () => {
-		let result = '';
-		return result.trim();
+	const getResults = () => {
+		return minify(text).css;
 	};
 
-	const results = showResults();
+	const results = getResults();
 
 	return (
 		<div className="app">
@@ -30,9 +30,9 @@ export default function Minifier() {
 				<Sidebar />
 				<section className="app-main">
 					<header className="page-header">
-						<h1 className="page-title">Minifier</h1>
+						<h1 className="page-title">CSS Minifier</h1>
 						<p className="page-desc">
-							This minifier removes whitespace, strips comments, and optimizes/shortens a few common programming patterns from JS and CSS code.
+							This minifier removes whitespace, strips comments, and optimizes/shortens a few common programming patterns from CSS code.
 						</p>
 					</header>
 
@@ -45,7 +45,7 @@ export default function Minifier() {
 										rows={14}
 										value={text}
 										placeholder="Just plain JavaScript or CSS code"
-										onChange={(e) => setText(e.target.value)}
+										onChange={async (e) => setText(e.target.value)}
 									/>
 									{text.length > 0 && (
 										<div className="clear-btn">

@@ -1,9 +1,9 @@
 /**
  * External dependancies
  */
+import { Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { useClipboard } from 'xooks';
 import { useState, useEffect } from 'react';
-import { Row, Col, Form, Button, InputGroup, Card } from 'react-bootstrap';
 import generator from 'generate-password';
 import Slider from 'react-rangeslider';
 
