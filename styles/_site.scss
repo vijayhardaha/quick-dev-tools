@@ -128,7 +128,11 @@ button + button {
 		.form-check-label {
 			@extend .btn;
 			@extend .btn-sm;
-			@include gradient-btn($gray-400, $gray-300, $gray-400);
+			@extend .btn-light;
+
+			&:active {
+				top: 0;
+			}
 		}
 
 		.form-check-label {
@@ -176,6 +180,7 @@ button + button {
 			padding: 0.5rem 0.825rem;
 			transition: none;
 			line-height: 1;
+
 			&:active {
 				top: 0;
 			}

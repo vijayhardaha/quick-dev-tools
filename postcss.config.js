@@ -13,6 +13,32 @@ module.exports = {
 				},
 			},
 		],
+		[
+			'@fullhuman/postcss-purgecss',
+			{
+				content: [
+					'./node_modules/react-bootstrap/**/*.{js,jsx,ts,tsx}',
+					'./node_modules/react-custom-scrollbars-2/**/*.{js,jsx,ts,tsx}',
+					'./node_modules/react-rangeslider/**/*.{js,jsx,ts,tsx}',
+					'./pages/**/*.{js,jsx,ts,tsx}',
+					'./lib/**/*.{js,jsx,ts,tsx}',
+				],
+				safelist: [
+					'html',
+					'body',
+					'form-check-inline',
+					'card',
+					'rangeslider',
+					/col-*/,
+					/btn-*/,
+					/custom-*/,
+					/card-*/,
+					/rangeslider-*/,
+					/rangeslider_*/,
+				],
+				defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+			},
+		],
 		'postcss-combine-media-query',
 	],
 };
