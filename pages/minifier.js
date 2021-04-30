@@ -47,7 +47,7 @@ export default function Minifier() {
 										placeholder="Just plain JavaScript or CSS code"
 										onChange={(e) => setText(e.target.value)}
 									/>
-									{text.length && (
+									{text.length > 0 && (
 										<div className="clear-btn">
 											<Button variant="light" size="sm" onClick={() => setText('')}>
 												Clear

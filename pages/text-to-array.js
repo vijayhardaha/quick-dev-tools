@@ -101,7 +101,7 @@ export default function TextToArray() {
 										placeholder="Write one option value per line."
 										onChange={(e) => setText(e.target.value)}
 									/>
-									{text.length && (
+									{text.length > 0 && (
 										<div className="clear-btn">
 											<Button variant="light" size="sm" onClick={() => setText('')}>
 												Clear

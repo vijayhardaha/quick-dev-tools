@@ -94,7 +94,7 @@ export default function Slugify() {
 								placeholder="Write one text per line to generate multiple slugs at once."
 								onChange={(e) => setText(e.target.value)}
 							/>
-							{text.length && (
+							{text.length > 0 && (
 								<div className="clear-btn">
 									<Button variant="light" size="sm" onClick={() => setText('')}>
 										Clear
@@ -102,18 +102,19 @@ export default function Slugify() {
 								</div>
 							)}
 						</Form.Group>
-
-						<Form.Group controlId="inputString">
-							<Form.Control
-								as="textarea"
-								rows={8}
-								readOnly
-								value={results}
-								placeholder="Results will be shown here."
-								onClick={(e) => e.target.select()}
-							/>
-							{results.length > 0 && <CopyCodeButton copied={clipboard.copied} onClick={() => clipboard.copy(results)} />}
-						</Form.Group>
+						{results.length > 0 && (
+							<Form.Group controlId="inputString">
+								<Form.Control
+									as="textarea"
+									rows={8}
+									readOnly
+									value={results}
+									placeholder="Results will be shown here."
+									onClick={(e) => e.target.select()}
+								/>
+								<CopyCodeButton copied={clipboard.copied} onClick={() => clipboard.copy(results)} />
+							</Form.Group>
+						)}
 					</div>
 				</section>
 			</div>
