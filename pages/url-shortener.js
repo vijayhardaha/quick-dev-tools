@@ -1,7 +1,7 @@
 import Meta from '../lib/meta';
 import Sidebar from '../lib/sidebar';
 
-export default function Home() {
+export default function UrlShortner() {
 	return (
 		<div className="app">
 			<Meta />

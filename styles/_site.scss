@@ -1,0 +1,161 @@
+.app-container {
+	display: flex;
+}
+
+.app-main {
+	flex: 1;
+	padding-left: 380px;
+}
+
+.page-header {
+	padding: 2rem 3rem;
+	color: $white;
+	background-image: linear-gradient(to right, #fd746c 0%, #ff9068 51%, #fd746c 100%);
+
+	h1 {
+		margin: 0 0 1rem 0;
+		color: inherit;
+		font-weight: $font-weight-bolder;
+	}
+}
+
+.app-content {
+	padding: 3rem 2rem;
+}
+
+button + button {
+	margin-left: 1rem;
+}
+
+@each $color, $value in $theme-colors {
+	.btn-#{$color} {
+		border: 0;
+
+		&:hover {
+			box-shadow: none;
+		}
+
+		&:focus {
+			box-shadow: none !important;
+		}
+
+		&:active {
+			position: relative;
+			top: -2px;
+		}
+	}
+}
+
+@mixin gradient-btn($color1, $color2, $color3) {
+	transition: background-position 0.25s ease-in-out;
+	background-image: linear-gradient(to right, $color1, 0%, $color2 48%, $color3 100%);
+	background-size: 120% auto;
+
+	&:hover {
+		background-position: right center;
+	}
+}
+
+.btn-primary {
+	color: $white;
+	@include gradient-btn(#fd746c, #ff9068, #fd746c);
+}
+
+.btn-info {
+	@include gradient-btn(#56ccf2, #2f80ed, #56ccf2);
+}
+
+.btn-secondary {
+	@include gradient-btn($gray-400, $gray-300, $gray-400);
+}
+
+.btn-success {
+	@include gradient-btn(#4cb8c4, #3cd3ad, #4cb8c4);
+}
+
+.btn-warning {
+	@include gradient-btn(#fceabb, #f8b500, #fceabb);
+}
+
+.btn-danger {
+	@include gradient-btn(#ee0979, #ff6a00, #ee0979);
+}
+
+.btn-dark {
+	@include gradient-btn(#283048, #859398, #283048);
+}
+
+.check-btn-group {
+	margin-right: 1.5rem;
+	margin-bottom: 1.5rem;
+
+	.form-check {
+		margin: 0;
+
+		&:first-of-type {
+			.form-check-label {
+				border-top-left-radius: $border-radius-sm;
+				border-bottom-left-radius: $border-radius-sm;
+			}
+		}
+
+		&:last-of-type {
+			.form-check-label {
+				border-top-right-radius: $border-radius-sm;
+				border-bottom-right-radius: $border-radius-sm;
+			}
+		}
+
+		&:not(:first-of-type) {
+			.form-check-label {
+				margin-left: -1px;
+			}
+		}
+
+		.form-check-input {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+
+			&:checked + .form-check-label {
+				z-index: 2;
+				color: $white;
+				border: 0;
+				@include gradient-btn(#fd746c, #ff9068, #fd746c);
+			}
+		}
+
+		.form-check-label {
+			@extend .btn;
+			@extend .btn-sm;
+			@include gradient-btn($gray-400, $gray-300, $gray-400);
+		}
+
+		.form-check-label {
+			position: relative;
+			z-index: 1;
+			display: inline-flex;
+			align-items: center;
+			border: 0;
+			border-radius: 0;
+		}
+	}
+}
+
+.custom-control.custom-checkbox,
+.custom-control.custom-radio {
+	padding-left: 2rem;
+
+	.custom-control-label {
+		cursor: pointer;
+
+		&::before,
+		&::after {
+			top: 50%;
+			left: -2rem;
+			width: 1.5rem;
+			height: 1.5rem;
+			transform: translateY(-50%);
+		}
+	}
+}
