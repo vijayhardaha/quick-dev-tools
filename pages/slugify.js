@@ -12,11 +12,12 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
  */
 import Meta from '../lib/meta';
 import Sidebar from '../lib/sidebar';
-import { downloadText } from '../lib/helper';
+import CopyCodeButton from '../lib/copy-btn';
 
 export default function Slugify() {
+	const defaultData = `What’s New in the Block Editor\nIntroducing Milestone Notifications\nDesign Update for a More Intuitive Experience\nPublish and Update WordPress Posts Directly From Ulysses\nIntroducing new Stats widgets for iPhone\nWhat’s New in the Block Editor: Edit Your Images, Drag and Drop Blocks and Patterns, and More\nTurn Your WordPress.com Blog into a Podcast with Anchor\nShowcase Your Figma Designs on WordPress P2`;
 	const clipboard = useClipboard({ timeout: 500 });
-	const [text, setText] = useState('');
+	const [text, setText] = useState(defaultData);
 	const [replacement, setReplacement] = useState('-');
 	const [lowercase, setLowercase] = useState(true);
 	const radios = [
@@ -83,48 +84,36 @@ export default function Slugify() {
 									onChange={() => setLowercase(!lowercase)}
 								/>
 							</Form.Group>
-
-							<Form.Group className="ml-auto">
-								<Button variant="dark" size="sm" onClick={() => setText('')}>
-									Clear
-								</Button>
-							</Form.Group>
 						</div>
-						<Row>
-							<Col sm="12" md="6">
-								<Form.Group controlId="inputString">
-									<Form.Control
-										as="textarea"
-										rows={14}
-										value={text}
-										placeholder="Write one text per line to generate multiple slugs at once."
-										onChange={(e) => setText(e.target.value)}
-									/>
-								</Form.Group>
-							</Col>
-							<Col sm="12" md="6">
-								<Form.Group controlId="inputString">
-									<Form.Control
-										as="textarea"
-										rows={14}
-										readOnly
-										value={results}
-										placeholder="Results will be shown here."
-										onClick={(e) => e.target.select()}
-									/>
-								</Form.Group>
-								{results.length > 0 && (
-									<>
-										<Button variant="success" onClick={() => clipboard.copy(results)}>
-											{clipboard.copied ? 'Copied!' : 'Copy to Clipboard'}
-										</Button>
-										<Button variant="info" onClick={() => downloadText(results)}>
-											Download to TXT File
-										</Button>
-									</>
-								)}
-							</Col>
-						</Row>
+
+						<Form.Group controlId="inputString">
+							<Form.Control
+								as="textarea"
+								rows={8}
+								value={text}
+								placeholder="Write one text per line to generate multiple slugs at once."
+								onChange={(e) => setText(e.target.value)}
+							/>
+							{text.length && (
+								<div className="clear-btn">
+									<Button variant="light" size="sm" onClick={() => setText('')}>
+										Clear
+									</Button>
+								</div>
+							)}
+						</Form.Group>
+
+						<Form.Group controlId="inputString">
+							<Form.Control
+								as="textarea"
+								rows={8}
+								readOnly
+								value={results}
+								placeholder="Results will be shown here."
+								onClick={(e) => e.target.select()}
+							/>
+							{results.length > 0 && <CopyCodeButton copied={clipboard.copied} onClick={() => clipboard.copy(results)} />}
+						</Form.Group>
 					</div>
 				</section>
 			</div>

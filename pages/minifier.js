@@ -10,6 +10,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
  */
 import Meta from '../lib/meta';
 import Sidebar from '../lib/sidebar';
+import CopyCodeButton from '../lib/copy-btn';
 
 export default function Minifier() {
 	const clipboard = useClipboard({ timeout: 500 });
@@ -46,24 +47,20 @@ export default function Minifier() {
 										placeholder="Just plain JavaScript or CSS code"
 										onChange={(e) => setText(e.target.value)}
 									/>
+									{text.length && (
+										<div className="clear-btn">
+											<Button variant="light" size="sm" onClick={() => setText('')}>
+												Clear
+											</Button>
+										</div>
+									)}
 								</Form.Group>
-								<div>
-									<Button variant="dark" onClick={() => setText('')}>
-										Clear
-									</Button>
-								</div>
 							</Col>
 							<Col sm="12" md="6">
 								<Form.Group controlId="inputString">
 									<Form.Control as="textarea" rows={14} readOnly value={results} placeholder="Results will be shown here." />
+									{results.length > 0 && <CopyCodeButton copied={clipboard.copied} onClick={() => clipboard.copy(results)} />}
 								</Form.Group>
-								{results.length > 0 && (
-									<>
-										<Button variant="primary" onClick={() => clipboard.copy(results)}>
-											{clipboard.copied ? 'Copied!' : 'Copy to Clipboard'}
-										</Button>
-									</>
-								)}
 							</Col>
 						</Row>
 					</div>
