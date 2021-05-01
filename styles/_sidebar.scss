@@ -1,0 +1,31 @@
+.app-sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: $sidebar-width;
+	height: 100%;
+	box-shadow: $box-shadow-lg;
+
+	& > div {
+		height: 100%;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-bottom: 20px;
+	}
+
+	.site-logo {
+		padding: 1rem;
+		h1 {
+			color: $primary;
+			font-weight: 600;
+			a {
+				color: inherit;
+			}
+		}
+	}
+
+	.scrollbar {
+		height: calc(100vh - 162px) !important;
+	}
+}

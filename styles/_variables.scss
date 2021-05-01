@@ -27,10 +27,11 @@ $info: #11cdef;
 $warning: #fb6340;
 $danger: #f5365c;
 $light: #adb5bd;
-$dark: #212529;
+$dark: $gray-700;
 
 $link-hover-decoration: none !default;
 $font-family-sans-serif: 'Poppins', sans-serif !default;
 $font-family-sans-serif: 'Federo', sans-serif !default;
-
-$sidebar-width: 300px;
+$headings-color: $gray-700 !default;
+$sidebar-width: 300px !default;
+$input-border-color: $gray-300 !default;

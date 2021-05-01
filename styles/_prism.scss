@@ -19,6 +19,7 @@ pre[class*='language-'] {
 	font-size: 1em;
 	line-height: 1.5;
 }
+
 pre[class*='language-']::-moz-selection,
 pre[class*='language-'] ::-moz-selection,
 code[class*='language-']::-moz-selection,
@@ -26,6 +27,7 @@ code[class*='language-'] ::-moz-selection {
 	background: #b3d4fc;
 	text-shadow: none;
 }
+
 pre[class*='language-']::selection,
 pre[class*='language-'] ::selection,
 code[class*='language-']::selection,
@@ -33,6 +35,7 @@ code[class*='language-'] ::selection {
 	background: #b3d4fc;
 	text-shadow: none;
 }
+
 @media print {
 	code[class*='language-'],
 	pre[class*='language-'] {
@@ -51,8 +54,9 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-	background: #f7f7f7;
+	background: $gray-100;
 }
+
 :not(pre) {
 	& > code[class*='language-'] {
 		padding: 0.1em;
@@ -68,18 +72,23 @@ pre[class*='language-'] {
 	&.cdata {
 		color: slategray;
 	}
+
 	&.punctuation {
 		color: #999;
 	}
+
 	&.namespace {
 		opacity: 0.7;
 	}
+
 	&.italic {
 		font-style: italic;
 	}
+
 	&.entity {
 		cursor: help;
 	}
+
 	&.property,
 	&.tag,
 	&.boolean,
@@ -89,6 +98,7 @@ pre[class*='language-'] {
 	&.deleted {
 		color: #905;
 	}
+
 	&.selector,
 	&.attr-name,
 	&.string,
@@ -97,31 +107,37 @@ pre[class*='language-'] {
 	&.inserted {
 		color: #690;
 	}
+
 	&.operator,
 	&.entity,
 	&.url {
 		color: #9a6e3a;
 		background: hsla(0, 0%, 100%, 0.5);
 	}
+
 	&.atrule,
 	&.attr-value,
 	&.keyword {
 		color: #07a;
 	}
+
 	&.function,
 	&.class-name {
 		color: #dd4a68;
 	}
+
 	&.regex,
 	&.important,
 	&.variable {
 		color: #e90;
 	}
+
 	&.important,
 	&.bold {
 		font-weight: bold;
 	}
 }
+
 .language-css .token.string,
 .style .token.string {
 	color: #9a6e3a;

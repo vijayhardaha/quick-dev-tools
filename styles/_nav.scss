@@ -1,0 +1,53 @@
+.app-sidebar {
+	.nav-wrap {
+		padding: 0 1rem;
+		position: relative;
+	}
+
+	.nav-links {
+		z-index: 2;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: relative;
+
+		li {
+			display: block;
+
+			a {
+				position: relative;
+				height: 72px;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				padding: 1.25rem 1rem;
+				color: $gray-600;
+
+				&.active {
+				}
+
+				.icon {
+					margin-right: 0.5rem;
+
+					svg {
+						width: 1.5rem;
+						height: 1.5rem;
+						display: block;
+					}
+				}
+			}
+		}
+	}
+
+	.nav-scroller {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		width: calc(100% - 2rem);
+		height: 72px;
+		transition: transform 0.2s ease;
+		border-radius: 15px;
+		background-color: $gray-100;
+	}
+}

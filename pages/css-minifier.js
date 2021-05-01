@@ -28,7 +28,7 @@ export default function CSSMinifier() {
 				<Form.Control as="textarea" rows={8} value={text} placeholder="Copy & Paste CSS code here" onChange={async (e) => setText(e.target.value)} />
 				{text.length > 0 && (
 					<div className="clear-btn">
-						<Button variant="light" size="sm" onClick={() => setText('')}>
+						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
 							Clear
 						</Button>
 					</div>

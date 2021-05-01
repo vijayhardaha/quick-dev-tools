@@ -1,0 +1,35 @@
+button + button {
+	margin-left: 1rem;
+}
+
+.btn-outline-light {
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active,
+	.show > &.dropdown-toggle,
+	&:hover {
+		color: $white;
+	}
+}
+
+.clear-btn,
+.copy-btn {
+	position: absolute;
+	z-index: 1;
+	top: 1.125rem;
+	right: 1.125rem;
+	width: auto;
+	height: auto;
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 0.825rem;
+		transition: none;
+		line-height: 1;
+	}
+}
+
+.copy-btn {
+	background: $gray-100;
+}

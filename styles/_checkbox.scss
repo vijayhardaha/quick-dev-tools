@@ -1,0 +1,78 @@
+.check-btn-group {
+	margin-right: 1.5rem;
+	margin-bottom: 1.5rem;
+
+	.form-check {
+		margin: 0;
+
+		&:first-of-type {
+			.form-check-label {
+				border-top-left-radius: $border-radius-sm;
+				border-bottom-left-radius: $border-radius-sm;
+			}
+		}
+
+		&:last-of-type {
+			.form-check-label {
+				border-top-right-radius: $border-radius-sm;
+				border-bottom-right-radius: $border-radius-sm;
+			}
+		}
+
+		&:not(:first-of-type) {
+			.form-check-label {
+				margin-left: -1px;
+			}
+		}
+
+		.form-check-input {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+
+			&:checked + .form-check-label {
+				z-index: 2;
+				color: $white;
+				@extend .btn-primary;
+			}
+		}
+
+		.form-check-label {
+			@extend .btn;
+			@extend .btn-sm;
+			@extend .btn-outline-light;
+		}
+
+		.form-check-label {
+			position: relative;
+			z-index: 1;
+			display: inline-flex;
+			align-items: center;
+			padding-right: 1rem;
+			padding-left: 1rem;
+			border-radius: 0;
+		}
+	}
+}
+
+.custom-control.custom-checkbox,
+.custom-control.custom-radio {
+	padding-left: 2rem;
+
+	.custom-control-label {
+		cursor: pointer;
+
+		&::before,
+		&::after {
+			top: 50%;
+			left: -2rem;
+			width: 1.5rem;
+			height: 1.5rem;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+.form-group {
+	position: relative;
+}

@@ -64,7 +64,7 @@ export default function UrlShortner() {
 				/>
 				{text.length > 0 && !loading && (
 					<div className="clear-btn">
-						<Button variant="light" size="sm" onClick={() => setText('')}>
+						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
 							Clear
 						</Button>
 					</div>

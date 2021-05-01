@@ -26,8 +26,8 @@ export default function Page({ header = true, children }) {
 					<section className="app-main">
 						{header && title !== '' && (
 							<header className="page-header">
-								<h1 className="page-title my-0">{title}</h1>
-								{desc !== '' && <p className="page-desc">{desc}</p>}
+								<h1 className="page-title mb-1 h2">{title}</h1>
+								{desc !== '' && <p className="text-muted mb-0">{desc}</p>}
 							</header>
 						)}
 						<div className="app-content">{children}</div>
