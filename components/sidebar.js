@@ -38,7 +38,7 @@ export default function Sidebar({ open, toogle }) {
 							</svg>
 						</label>
 					</div>
-					<div className="px-3 py-2 px-lg-4 py-lg-3">
+					<div className="px-3 py-2 px-lg-4 py-lg-3 d-flex justify-content-center flex-column">
 						<h1 className="mb-1 h2">
 							<Link href="/">
 								<a>Quick Tools</a>

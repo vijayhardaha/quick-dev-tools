@@ -2,6 +2,17 @@
 	max-width: 100%;
 	display: flex;
 	flex: 0 0 100%;
+
+	@include media-breakpoint-down('lg') {
+		flex-direction: column;
+	}
+	&[aria-expanded='true'] {
+		@include media-breakpoint-down('lg') {
+			overflow: hidden;
+			height: 100vh;
+			position: relative;
+		}
+	}
 }
 
 .app-main {
@@ -9,10 +20,6 @@
 
 	@include media-breakpoint-up('lg') {
 		padding-left: $sidebar-width;
-	}
-
-	@include media-breakpoint-down('lg') {
-		padding-top: 100px;
 	}
 }
 

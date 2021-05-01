@@ -48,7 +48,7 @@ export default function PasswordGenerator() {
 	return (
 		<Page>
 			<Card>
-				<Card.Body className="text-center">
+				<Card.Body className="text-lg-center">
 					<h1 className="my-5" style={{ wordWrap: 'break-word', wordBreak: 'break-all' }}>
 						{password}
 					</h1>
@@ -65,7 +65,7 @@ export default function PasswordGenerator() {
 							}}
 						/>
 					</div>
-					<div className="my-5">
+					<div className="mt-5 mb-4">
 						<Form.Group>
 							{defaultOptions.map((option, idx) => (
 								<Form.Check
@@ -88,10 +88,10 @@ export default function PasswordGenerator() {
 						</Form.Group>
 					</div>
 					<div className="mb-5">
-						<Button variant="primary" onClick={() => setPassword(generatePassword())}>
+						<Button variant="primary" className="mb-3 mr-3" onClick={() => setPassword(generatePassword())}>
 							Generate
 						</Button>
-						<Button variant="outline-light" onClick={() => clipboard.copy(password)}>
+						<Button variant="outline-light" className="mb-3" onClick={() => clipboard.copy(password)}>
 							{clipboard.copied ? 'Password Copied!' : 'Copy Password'}
 						</Button>
 					</div>

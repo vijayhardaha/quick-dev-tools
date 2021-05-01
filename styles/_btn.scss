@@ -1,7 +1,3 @@
-button + button {
-	margin-left: 1rem;
-}
-
 .btn-outline-light {
 	&:not(:disabled):not(.disabled):active,
 	&:not(:disabled):not(.disabled).active,
@@ -19,6 +15,7 @@ button + button {
 	right: 1.125rem;
 	width: auto;
 	height: auto;
+	background: $gray-100;
 
 	.btn {
 		display: inline-flex;
@@ -28,8 +25,4 @@ button + button {
 		transition: none;
 		line-height: 1;
 	}
-}
-
-.copy-btn {
-	background: $gray-100;
 }
