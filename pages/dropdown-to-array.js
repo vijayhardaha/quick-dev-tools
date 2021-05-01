@@ -8,11 +8,11 @@ import { useState } from 'react';
  * Internal dependancies
  */
 import { dropdownToArray } from '../lib/utils';
-import CopyCodeButton from '../components/copy';
 import Page from '../components/page';
+import Results from '../components/results';
 
 export default function DropdownToArray() {
-	const defaultData = `<select id="country" name="country">\n\t<option value="Afganistan">Afghanistan</option>\n\t<option value="Albania">Albania</option>\n\t<option value="Algeria">Algeria</option>\n\t<option value="American Samoa">American Samoa</option>\n\t<option value="Andorra">Andorra</option>\n\t<option value="Angola">Angola</option>\n\t<option value="Anguilla">Anguilla</option>\n\t<option value="Antigua & Barbuda">Antigua & Barbuda</option>\n\t<option value="Argentina">Argentina</option>\n\t<option value="Armenia">Armenia</option>\n\t<option value="Aruba">Aruba</option>\n\t<option value="Australia">Australia</option>\n</select>`;
+	const defaultData = `<select id="country" name="country">\n\t<option value="Afganistan">Afghanistan</option>\n\t<option value="Albania">Albania</option>\n\t<option value="Algeria">Algeria</option>\n\t<option value="American Samoa">American Samoa</option>\n\t<option value="Andorra">Andorra</option>\n\t<option value="Angola">Angola</option>\n</select>`;
 	const [text, setText] = useState(defaultData);
 	const [outputType, setOutputType] = useState('json');
 	const [arrayType, setArrayType] = useState('associative');
@@ -36,7 +36,7 @@ export default function DropdownToArray() {
 	return (
 		<Page>
 			<div>
-				<label className="">Output Type:</label>
+				<label className="">Output Options:</label>
 				<div className="d-flex align-items-center">
 					<Form.Group controlId="outputType" className="check-btn-group">
 						{outputTypes.map((radio, idx) => (
@@ -74,32 +74,25 @@ export default function DropdownToArray() {
 					</div>
 				)}
 			</div>
-			<Row>
-				<Col sm="12" md="6">
-					<Form.Group controlId="inputString">
-						<Form.Control
-							as="textarea"
-							rows={14}
-							value={text}
-							placeholder="Just put your select tag html code here"
-							onChange={(e) => setText(e.target.value)}
-						/>
-						{text.length > 0 && (
-							<div className="clear-btn">
-								<Button variant="light" size="sm" onClick={() => setText('')}>
-									Clear
-								</Button>
-							</div>
-						)}
-					</Form.Group>
-				</Col>
-				<Col sm="12" md="6">
-					<Form.Group controlId="inputString">
-						<Form.Control as="textarea" rows={14} readOnly value={results} placeholder="Results will be shown here." />{' '}
-						{results.length > 0 && <CopyCodeButton text={results} />}
-					</Form.Group>
-				</Col>
-			</Row>
+
+			<Form.Group controlId="input-text">
+				<Form.Control
+					as="textarea"
+					rows={8}
+					value={text}
+					placeholder="Just put your select tag html code here"
+					onChange={(e) => setText(e.target.value)}
+				/>
+				{text.length > 0 && (
+					<div className="clear-btn">
+						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
+							Clear
+						</Button>
+					</div>
+				)}
+			</Form.Group>
+
+			<Results results={results} />
 		</Page>
 	);
 }

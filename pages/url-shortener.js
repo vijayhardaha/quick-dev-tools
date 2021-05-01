@@ -10,8 +10,8 @@ import validUrl from 'valid-url';
  * Internal dependancies
  */
 import { cleanText } from '../lib/utils';
-import CopyCodeButton from '../components/copy';
 import Page from '../components/page';
+import Results from '../components/results';
 
 export default function UrlShortner() {
 	const defaultData = `https://example.com/\nhttps://www.google.com/\nhttps://www.facebook.com/\nhttps://twitter.com/\nhttps://github.com/`;
@@ -52,7 +52,7 @@ export default function UrlShortner() {
 
 	return (
 		<Page>
-			<Form.Group controlId="inputString">
+			<Form.Group controlId="input-text">
 				<Form.Control
 					as="textarea"
 					rows={8}
@@ -70,24 +70,14 @@ export default function UrlShortner() {
 					</div>
 				)}
 			</Form.Group>
+
 			<Form.Group>
 				<Button type="button" variant="primary" disabled={loading} onClick={!loading ? handleClick : null}>
 					{loading ? 'Generating Urls...' : 'Generate Short Urls'}
 				</Button>
 			</Form.Group>
-			{results.length > 0 && (
-				<Form.Group controlId="inputString">
-					<Form.Control
-						as="textarea"
-						rows={8}
-						readOnly
-						value={results}
-						placeholder="Results will be shown here."
-						onClick={(e) => e.target.select()}
-					/>
-					<CopyCodeButton text={results} />
-				</Form.Group>
-			)}
+
+			<Results results={results} />
 		</Page>
 	);
 }

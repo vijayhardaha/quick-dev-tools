@@ -9,8 +9,8 @@ import slugify from 'slugify';
 /**
  * Internal dependancies
  */
-import CopyCodeButton from '../components/copy';
 import Page from '../components/page';
+import Results from '../components/results';
 
 export default function Slugify() {
 	const defaultData = `What’s New in the Block Editor\nIntroducing Milestone Notifications\nDesign Update for a More Intuitive Experience\nPublish and Update WordPress Posts Directly From Ulysses\nIntroducing new Stats widgets for iPhone\nWhat’s New in the Block Editor: Edit Your Images, Drag and Drop Blocks and Patterns, and More\nTurn Your WordPress.com Blog into a Podcast with Anchor\nShowcase Your Figma Designs on WordPress P2`;
@@ -41,6 +41,7 @@ export default function Slugify() {
 
 	return (
 		<Page>
+			<label className="">Output Options:</label>
 			<div className="d-flex align-items-center">
 				<Form.Group controlId="replacement" className="check-btn-group">
 					{radios.map((radio, idx) => (
@@ -71,7 +72,7 @@ export default function Slugify() {
 				</Form.Group>
 			</div>
 
-			<Form.Group controlId="inputString">
+			<Form.Group controlId="input-text">
 				<Form.Control
 					as="textarea"
 					rows={8}
@@ -87,19 +88,8 @@ export default function Slugify() {
 					</div>
 				)}
 			</Form.Group>
-			{results.length > 0 && (
-				<Form.Group controlId="inputString">
-					<Form.Control
-						as="textarea"
-						rows={8}
-						readOnly
-						value={results}
-						placeholder="Results will be shown here."
-						onClick={(e) => e.target.select()}
-					/>
-					<CopyCodeButton text={results} />
-				</Form.Group>
-			)}
+
+			<Results results={results} />
 		</Page>
 	);
 }

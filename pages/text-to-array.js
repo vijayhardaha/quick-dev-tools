@@ -1,18 +1,18 @@
 /**
  * External dependancies
  */
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 
 /**
  * Internal dependancies
  */
 import { textToArray } from '../lib/utils';
-import CopyCodeButton from '../components/copy';
 import Page from '../components/page';
+import Results from '../components/results';
 
 export default function TextToArray() {
-	const defaultData = `Afghanistan\nAlbania\nAlgeria\nAmerican Samoa\nAndorra\nAngola\nAnguilla\nAntigua & Barbuda\nArgentina\nArmenia\nAruba\nAustralia`;
+	const defaultData = `Afghanistan\nAlbania\nAlgeria\nAmerican Samoa\nAndorra\nAngola\nAnguilla\nAntigua & Barbuda`;
 	const [text, setText] = useState(defaultData);
 	const [outputType, setOutputType] = useState('json');
 	const [arrayType, setArrayType] = useState('associative');
@@ -75,32 +75,19 @@ export default function TextToArray() {
 					</div>
 				)}
 			</div>
-			<Row>
-				<Col sm="12" md="6">
-					<Form.Group controlId="inputString">
-						<Form.Control
-							as="textarea"
-							rows={14}
-							value={text}
-							placeholder="Write one option value per line."
-							onChange={(e) => setText(e.target.value)}
-						/>
-						{text.length > 0 && (
-							<div className="clear-btn">
-								<Button variant="light" size="sm" onClick={() => setText('')}>
-									Clear
-								</Button>
-							</div>
-						)}
-					</Form.Group>
-				</Col>
-				<Col sm="12" md="6">
-					<Form.Group controlId="inputString">
-						<Form.Control as="textarea" rows={14} readOnly value={results} placeholder="Results will be shown here." />{' '}
-						{results.length > 0 && <CopyCodeButton text={results} />}
-					</Form.Group>
-				</Col>
-			</Row>
+
+			<Form.Group controlId="input-text">
+				<Form.Control as="textarea" rows={8} value={text} placeholder="Write one option value per line." onChange={(e) => setText(e.target.value)} />
+				{text.length > 0 && (
+					<div className="clear-btn">
+						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
+							Clear
+						</Button>
+					</div>
+				)}
+			</Form.Group>
+
+			<Results results={results} />
 		</Page>
 	);
 }

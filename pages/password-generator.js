@@ -88,10 +88,10 @@ export default function PasswordGenerator() {
 						</Form.Group>
 					</div>
 					<div className="mb-5">
-						<Button variant="primary" onClick={() => setPassword(generatePassword())}>
+						<Button variant="primary" size="lg" onClick={() => setPassword(generatePassword())}>
 							Generate
 						</Button>
-						<Button variant="success" onClick={() => clipboard.copy(password)}>
+						<Button variant="outline-light" size="lg" onClick={() => clipboard.copy(password)}>
 							{clipboard.copied ? 'Password Copied!' : 'Copy Password'}
 						</Button>
 					</div>

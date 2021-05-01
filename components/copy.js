@@ -6,7 +6,7 @@ import { MdContentCopy } from 'react-icons/md';
 import { useClipboard } from 'xooks';
 import PropTypes from 'prop-types';
 
-export default function CopyCodeButton({ text, ...others }) {
+export default function CopyCodeButton({ text }) {
 	const clipboard = useClipboard({ timeout: 1000 });
 	const copied = clipboard.copied;
 
@@ -22,5 +22,5 @@ export default function CopyCodeButton({ text, ...others }) {
 }
 
 CopyCodeButton.propTypes = {
-	copied: PropTypes.bool.isRequired,
+	text: PropTypes.string.isRequired,
 };

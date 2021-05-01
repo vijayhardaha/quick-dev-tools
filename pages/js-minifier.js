@@ -1,15 +1,15 @@
 /**
  * External dependancies
  */
+import { Form, Button } from 'react-bootstrap';
 import { minify } from 'terser';
-import { Row, Col, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
 /**
  * Internal dependancies
  */
-import CopyCodeButton from '../components/copy';
 import Page from '../components/page';
+import Results from '../components/results';
 
 function useAsyncHook(text) {
 	const [results, setResults] = useState('');
@@ -20,7 +20,7 @@ function useAsyncHook(text) {
 				const result = await minify(text, { compress: false, format: { comments: false } });
 				setResults(result.code);
 			} catch (error) {
-				const { message, filename, line, col, pos } = error;
+				const { message } = error;
 				console.log(message);
 			}
 		}
@@ -31,37 +31,27 @@ function useAsyncHook(text) {
 }
 
 export default function JSMinifier() {
-	const [text, setText] = useState('');
+	const defaultText =
+		`// input from the user\nconst min = parseInt(prompt("Enter a min value: "));\nconst max = parseInt(prompt("Enter a max value: "));\n\n// generating a random number\nconst a = Math.floor(Math.random() * (max - min + 1)) + min;\n\n// display a random number\n` +
+		'console.log(`Random value between ${min} and ${max} is ${a}`);';
+
+	const [text, setText] = useState(defaultText);
 	const [results] = useAsyncHook(text);
 
 	return (
 		<Page>
-			<Row>
-				<Col sm="12" md="6">
-					<Form.Group controlId="inputString">
-						<Form.Control
-							as="textarea"
-							rows={14}
-							value={text}
-							placeholder="Just plain JavaScript or CSS code"
-							onChange={async (e) => setText(e.target.value)}
-						/>
-						{text.length > 0 && (
-							<div className="clear-btn">
-								<Button variant="light" size="sm" onClick={() => setText('')}>
-									Clear
-								</Button>
-							</div>
-						)}
-					</Form.Group>
-				</Col>
-				<Col sm="12" md="6">
-					<Form.Group controlId="inputString">
-						<Form.Control as="textarea" rows={14} readOnly value={results} placeholder="Results will be shown here." />
-						{results.length > 0 && <CopyCodeButton text={results} />}
-					</Form.Group>
-				</Col>
-			</Row>
+			<Form.Group controlId="input-text">
+				<Form.Control as="textarea" rows={8} value={text} placeholder="Copy & Paste JavaScript code here" onChange={(e) => setText(e.target.value)} />
+				{text.length > 0 && (
+					<div className="clear-btn">
+						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
+							Clear
+						</Button>
+					</div>
+				)}
+			</Form.Group>
+
+			{results.length > 0 && <Results results={results} lang="js"/>}
 		</Page>
 	);
 }

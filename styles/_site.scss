@@ -1,6 +1,6 @@
 .app-container {
-	display: flex;
 	max-width: 100%;
+	display: flex;
 	flex: 0 0 100%;
 }
 
@@ -26,13 +26,12 @@
 	}
 
 	.site-logo {
-		padding: 2rem 1rem;
+		padding: 1rem 1rem;
 		background: #f9f9fd;
 
 		h1 {
 			color: $primary;
-			font-weight: $font-weight-bolder;
-
+			font-weight: 600;
 			a {
 				color: inherit;
 			}
@@ -79,17 +78,17 @@
 }
 
 .page-header {
-	padding: 2rem 3rem;
+	padding: 1rem 2rem;
 	background: #f9f9fd;
 
 	h1 {
 		color: inherit;
-		font-weight: $font-weight-bolder;
+		font-weight: 600;
 	}
 }
 
 .app-content {
-	padding: 3rem 2rem;
+	padding: 2rem;
 }
 
 button + button {
@@ -131,7 +130,6 @@ button + button {
 			&:checked + .form-check-label {
 				z-index: 2;
 				color: $white;
-				border: 0;
 				@extend .btn-primary;
 			}
 		}
@@ -139,7 +137,7 @@ button + button {
 		.form-check-label {
 			@extend .btn;
 			@extend .btn-sm;
-			@extend .btn-light;
+			@extend .btn-outline-light;
 		}
 
 		.form-check-label {
@@ -147,7 +145,8 @@ button + button {
 			z-index: 1;
 			display: inline-flex;
 			align-items: center;
-			border: 0;
+			padding-right: 1rem;
+			padding-left: 1rem;
 			border-radius: 0;
 		}
 	}
@@ -173,25 +172,29 @@ button + button {
 
 .form-group {
 	position: relative;
+}
 
-	.clear-btn,
-	.copy-btn {
-		position: absolute;
-		z-index: 1;
-		top: 1rem;
-		right: 1rem;
-		width: auto;
-		height: auto;
+.clear-btn,
+.copy-btn {
+	position: absolute;
+	z-index: 1;
+	top: 1.125rem;
+	right: 1.125rem;
+	width: auto;
+	height: auto;
 
-		.btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-			padding: 0.5rem 0.825rem;
-			transition: none;
-			line-height: 1;
-		}
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 0.825rem;
+		transition: none;
+		line-height: 1;
 	}
+}
+
+.copy-btn {
+	background: #f7f7f7;
 }
 
 .tools-cards {
@@ -207,8 +210,8 @@ button + button {
 	.card-icon {
 		padding: 1.5rem;
 		text-align: center;
-		background: #f9f9fd;
 		color: $gray-600;
+		background: #f9f9fd;
 
 		svg {
 			width: 6rem;
@@ -228,5 +231,49 @@ button + button {
 	.card-text {
 		color: $gray-600;
 		font-size: $font-size-sm;
+	}
+}
+
+.results-container {
+	position: relative;
+	width: 100%;
+	height: 300px;
+}
+
+.btn-outline-light {
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active,
+	.show > &.dropdown-toggle,
+	&:hover {
+		color: $white;
+	}
+}
+
+.tab-content {
+	padding: 1rem 0;
+}
+
+.nav-tabs {
+	.nav-link {
+		position: relative;
+		padding: 0.825rem 1rem;
+		color: $gray-700;
+		border: 0;
+		border-bottom-width: 4px;
+		border-radius: 0;
+	}
+
+	.nav-link.active,
+	.nav-item.show .nav-link {
+		color: $primary;
+
+		&::after {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			content: '';
+			border-bottom: 4px solid $primary;
+		}
 	}
 }
