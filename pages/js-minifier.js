@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 /**
  * Internal dependancies
  */
+import ClearButton from '../components/clear';
 import Page from '../components/page';
 import Results from '../components/results';
 
@@ -30,11 +31,10 @@ function useAsyncHook(text) {
 	return [results];
 }
 
-export default function JSMinifier() {
-	const defaultText =
-		`// input from the user\nconst min = parseInt(prompt("Enter a min value: "));\nconst max = parseInt(prompt("Enter a max value: "));\n\n// generating a random number\nconst a = Math.floor(Math.random() * (max - min + 1)) + min;\n\n// display a random number\n` +
-		'console.log(`Random value between ${min} and ${max} is ${a}`);';
+const defaultText =
+	'// input from the user\nconst min = parseInt(prompt("Enter a min value: "));\nconst max = parseInt(prompt("Enter a max value: "));\n\n// generating a random number\nconst a = Math.floor(Math.random() * (max - min + 1)) + min;\n\n// display a random number\nconsole.log(`Random value between ${min} and ${max} is ${a}`);';
 
+export default function JSMinifier() {
 	const [text, setText] = useState(defaultText);
 	const [results] = useAsyncHook(text);
 
@@ -42,16 +42,11 @@ export default function JSMinifier() {
 		<Page>
 			<Form.Group controlId="input-text">
 				<Form.Control as="textarea" rows={8} value={text} placeholder="Copy & Paste JavaScript code here" onChange={(e) => setText(e.target.value)} />
-				{text.length > 0 && (
-					<div className="clear-btn">
-						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
-							Clear
-						</Button>
-					</div>
-				)}
+
+				<ClearButton text={text} handle={setText} />
 			</Form.Group>
 
-			{results.length > 0 && <Results results={results} lang="js"/>}
+			{results.length > 0 && <Results results={results} lang="js" />}
 		</Page>
 	);
 }

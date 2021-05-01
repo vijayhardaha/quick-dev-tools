@@ -1,7 +1,10 @@
 .page-header {
 	padding: 1rem 2rem;
+	padding-left: 6rem;
 	background: $gray-100;
-
+	@include media-breakpoint-up('lg') {
+		padding: 1rem 2rem;
+	}
 	h1 {
 		color: $gray-700;
 		font-weight: 600;

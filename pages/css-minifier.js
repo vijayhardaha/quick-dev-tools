@@ -8,12 +8,13 @@ import { useState } from 'react';
 /**
  * Internal dependancies
  */
+import ClearButton from '../components/clear';
 import Page from '../components/page';
 import Results from '../components/results';
 
-export default function CSSMinifier() {
-	const defaultText = `html {\n\tline-height: 1.15; /* 1 */\n\t-webkit-text-size-adjust: 100%; /* 2 */\n}\nbody {\n\tmargin: 0;\n}\nmain {\n\tdisplay: block;\n}`;
+const defaultText = `html {\n\tline-height: 1.15; /* 1 */\n\t-webkit-text-size-adjust: 100%; /* 2 */\n}\nbody {\n\tmargin: 0;\n}\nmain {\n\tdisplay: block;\n}`;
 
+export default function CSSMinifier() {
 	const [text, setText] = useState(defaultText);
 
 	const getResults = () => {
@@ -26,16 +27,11 @@ export default function CSSMinifier() {
 		<Page>
 			<Form.Group controlId="input-text">
 				<Form.Control as="textarea" rows={8} value={text} placeholder="Copy & Paste CSS code here" onChange={async (e) => setText(e.target.value)} />
-				{text.length > 0 && (
-					<div className="clear-btn">
-						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
-							Clear
-						</Button>
-					</div>
-				)}
+
+				<ClearButton text={text} handle={setText} />
 			</Form.Group>
 
-			<Results results={results} lang="css"/>
+			<Results results={results} lang="css" />
 		</Page>
 	);
 }

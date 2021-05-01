@@ -30,8 +30,17 @@ $light: #adb5bd;
 $dark: $gray-700;
 
 $link-hover-decoration: none !default;
+
 $font-family-sans-serif: 'Poppins', sans-serif !default;
 $font-family-sans-serif: 'Federo', sans-serif !default;
+$font-family-monospace: 'Courier Prime', monospace !default;
+
 $headings-color: $gray-700 !default;
 $sidebar-width: 300px !default;
+
 $input-border-color: $gray-300 !default;
+
+$btn-padding-y: 0.625rem !default;
+$btn-padding-x: 2rem !default;
+$btn-padding-y-lg: 1rem !default;
+$btn-padding-x-lg: 2.5rem !default;

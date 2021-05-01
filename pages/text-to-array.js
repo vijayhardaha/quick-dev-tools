@@ -8,12 +8,14 @@ import { useState } from 'react';
  * Internal dependancies
  */
 import { textToArray } from '../lib/utils';
+import ClearButton from '../components/clear';
 import Page from '../components/page';
 import Results from '../components/results';
 
+const defaultText = `Afghanistan\nAlbania\nAlgeria\nAmerican Samoa\nAndorra\nAngola\nAnguilla\nAntigua & Barbuda`;
+
 export default function TextToArray() {
-	const defaultData = `Afghanistan\nAlbania\nAlgeria\nAmerican Samoa\nAndorra\nAngola\nAnguilla\nAntigua & Barbuda`;
-	const [text, setText] = useState(defaultData);
+	const [text, setText] = useState(defaultText);
 	const [outputType, setOutputType] = useState('json');
 	const [arrayType, setArrayType] = useState('associative');
 
@@ -78,13 +80,8 @@ export default function TextToArray() {
 
 			<Form.Group controlId="input-text">
 				<Form.Control as="textarea" rows={8} value={text} placeholder="Write one option value per line." onChange={(e) => setText(e.target.value)} />
-				{text.length > 0 && (
-					<div className="clear-btn">
-						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
-							Clear
-						</Button>
-					</div>
-				)}
+
+				<ClearButton text={text} handle={setText} />
 			</Form.Group>
 
 			<Results results={results} />

@@ -9,13 +9,14 @@ import slugify from 'slugify';
 /**
  * Internal dependancies
  */
+import ClearButton from '../components/clear';
 import Page from '../components/page';
 import Results from '../components/results';
 
-export default function Slugify() {
-	const defaultData = `What’s New in the Block Editor\nIntroducing Milestone Notifications\nDesign Update for a More Intuitive Experience\nPublish and Update WordPress Posts Directly From Ulysses\nIntroducing new Stats widgets for iPhone\nWhat’s New in the Block Editor: Edit Your Images, Drag and Drop Blocks and Patterns, and More\nTurn Your WordPress.com Blog into a Podcast with Anchor\nShowcase Your Figma Designs on WordPress P2`;
+const defaultText = `What’s New in the Block Editor\nIntroducing Milestone Notifications\nDesign Update for a More Intuitive Experience\nPublish and Update WordPress Posts Directly From Ulysses\nIntroducing new Stats widgets for iPhone\nWhat’s New in the Block Editor: Edit Your Images, Drag and Drop Blocks and Patterns, and More\nTurn Your WordPress.com Blog into a Podcast with Anchor\nShowcase Your Figma Designs on WordPress P2`;
 
-	const [text, setText] = useState(defaultData);
+export default function Slugify() {
+	const [text, setText] = useState(defaultText);
 	const [replacement, setReplacement] = useState('-');
 	const [lowercase, setLowercase] = useState(true);
 	const radios = [
@@ -42,6 +43,7 @@ export default function Slugify() {
 	return (
 		<Page>
 			<label className="">Output Options:</label>
+
 			<div className="d-flex align-items-center">
 				<Form.Group controlId="replacement" className="check-btn-group">
 					{radios.map((radio, idx) => (
@@ -80,13 +82,8 @@ export default function Slugify() {
 					placeholder="Write one text per line to generate multiple slugs at once."
 					onChange={(e) => setText(e.target.value)}
 				/>
-				{text.length > 0 && (
-					<div className="clear-btn">
-						<Button variant="light" size="sm" onClick={() => setText('')}>
-							Clear
-						</Button>
-					</div>
-				)}
+
+				<ClearButton text={text} handle={setText} />
 			</Form.Group>
 
 			<Results results={results} />

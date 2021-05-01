@@ -1,8 +1,7 @@
 /**
  * External dependancies
  */
-import { useRef, useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRef } from 'react';
 import Link from 'next/link';
 import Scrollbars from 'react-custom-scrollbars-2';
 
@@ -10,21 +9,10 @@ import Scrollbars from 'react-custom-scrollbars-2';
  * Internal dependancies
  */
 import { TOOLS } from '../lib/constants';
-import { findCurrentIndex } from '../lib/utils';
 import ActiveLink from './link';
 
-const LINK_HEIGHT = 72;
-
-export default function Sidebar() {
+export default function Sidebar({ open, toogle }) {
 	const scrollbars = useRef();
-	const { asPath } = useRouter();
-	const [current, setCurrent] = useState(findCurrentIndex(asPath));
-
-	useEffect(() => {
-		const currentIndex = findCurrentIndex(asPath);
-		setCurrent(currentIndex);
-		scrollbars.current && scrollbars.current.scrollTop(currentIndex * LINK_HEIGHT);
-	}, [asPath]);
 
 	const items = TOOLS.map((tool) => (
 		<li key={tool.name}>
@@ -38,28 +26,31 @@ export default function Sidebar() {
 	));
 
 	return (
-		<aside className="app-sidebar">
-			<div>
-				<div className="site-logo">
-					<h1 className="mb-1 h2">
-						<Link href="/">
-							<a>Quick Tools</a>
-						</Link>
-					</h1>
-					<p className="text-muted mb-0">Dev tools for everyday use</p>
-				</div>
-				<Scrollbars universal className="scrollbar" style={{ width: '100%' }} ref={scrollbars}>
-					<div className="nav-wrap">
-						<ul className="nav-links">{items}</ul>
-						<div
-							className="nav-scroller"
-							style={{
-								transform: current !== -1 ? `translateY(${current * 72}px)` : 'scaleY(0)',
-							}}
-						></div>
-					</div>
-				</Scrollbars>
+		<>
+			<div class="menu" onClick={() => toogle(!open)}>
+				<label>
+					<svg viewBox="0 0 100 100" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+						<path class="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
+						<path class="line--2" d="M0 50h70" />
+						<path class="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
+					</svg>
+				</label>
 			</div>
-		</aside>
+			<aside className="app-sidebar">
+				<div className="sidebar-wrapper">
+					<div className="site-logo mb-3">
+						<h1 className="mb-1 h2">
+							<Link href="/">
+								<a>Quick Tools</a>
+							</Link>
+						</h1>
+						<p className="text-muted mb-0">Dev tools for everyday use</p>
+					</div>
+					<Scrollbars universal className="scrollbar" style={{ width: '100%' }} ref={scrollbars}>
+						<ul className="nav-links">{items}</ul>
+					</Scrollbars>
+				</div>
+			</aside>
+		</>
 	);
 }

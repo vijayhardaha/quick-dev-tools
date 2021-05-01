@@ -2,7 +2,8 @@
  * External dependancies
  */
 import { Container } from 'react-bootstrap';
-import { useRouter } from 'next/router';
+import { useRouter  } from 'next/router';
+import { useState } from 'react';
 
 /**
  * Internal dependancies
@@ -17,12 +18,14 @@ export default function Page({ header = true, children }) {
 	const title = typeof meta !== 'undefined' ? meta.name : '';
 	const desc = typeof meta !== 'undefined' ? meta.description : '';
 
+	const [open, toogle] = useState(false);
+
 	return (
 		<Container fluid className="px-0">
 			<div className="app">
 				<Meta meta={meta} />
-				<div className="app-container">
-					<Sidebar />
+				<div className="app-container" aria-expanded={open}>
+					<Sidebar open={open} toogle={toogle}/>
 					<section className="app-main">
 						{header && title !== '' && (
 							<header className="page-header">

@@ -10,12 +10,14 @@ import validUrl from 'valid-url';
  * Internal dependancies
  */
 import { cleanText } from '../lib/utils';
+import ClearButton from '../components/clear';
 import Page from '../components/page';
 import Results from '../components/results';
 
+const defaultText = `https://example.com/\nhttps://www.google.com/\nhttps://www.facebook.com/\nhttps://twitter.com/\nhttps://github.com/`;
+
 export default function UrlShortner() {
-	const defaultData = `https://example.com/\nhttps://www.google.com/\nhttps://www.facebook.com/\nhttps://twitter.com/\nhttps://github.com/`;
-	const [text, setText] = useState(defaultData);
+	const [text, setText] = useState(defaultText);
 	const [results, setResults] = useState('');
 	const [loading, setLoading] = useState(false);
 
@@ -62,13 +64,8 @@ export default function UrlShortner() {
 						setText(e.target.value), setResults('');
 					}}
 				/>
-				{text.length > 0 && !loading && (
-					<div className="clear-btn">
-						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
-							Clear
-						</Button>
-					</div>
-				)}
+
+				<ClearButton text={text} handle={setText} />
 			</Form.Group>
 
 			<Form.Group>

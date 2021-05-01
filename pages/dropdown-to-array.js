@@ -8,12 +8,14 @@ import { useState } from 'react';
  * Internal dependancies
  */
 import { dropdownToArray } from '../lib/utils';
+import ClearButton from '../components/clear';
 import Page from '../components/page';
 import Results from '../components/results';
 
+const defaultText = `<select id="country" name="country">\n\t<option value="Afganistan">Afghanistan</option>\n\t<option value="Albania">Albania</option>\n\t<option value="Algeria">Algeria</option>\n\t<option value="American Samoa">American Samoa</option>\n\t<option value="Andorra">Andorra</option>\n\t<option value="Angola">Angola</option>\n</select>`;
+
 export default function DropdownToArray() {
-	const defaultData = `<select id="country" name="country">\n\t<option value="Afganistan">Afghanistan</option>\n\t<option value="Albania">Albania</option>\n\t<option value="Algeria">Algeria</option>\n\t<option value="American Samoa">American Samoa</option>\n\t<option value="Andorra">Andorra</option>\n\t<option value="Angola">Angola</option>\n</select>`;
-	const [text, setText] = useState(defaultData);
+	const [text, setText] = useState(defaultText);
 	const [outputType, setOutputType] = useState('json');
 	const [arrayType, setArrayType] = useState('associative');
 
@@ -83,13 +85,8 @@ export default function DropdownToArray() {
 					placeholder="Just put your select tag html code here"
 					onChange={(e) => setText(e.target.value)}
 				/>
-				{text.length > 0 && (
-					<div className="clear-btn">
-						<Button variant="outline-light" size="sm" onClick={() => setText('')}>
-							Clear
-						</Button>
-					</div>
-				)}
+
+				<ClearButton text={text} handle={setText} />
 			</Form.Group>
 
 			<Results results={results} />
