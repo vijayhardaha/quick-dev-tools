@@ -8,6 +8,7 @@
 
 		li {
 			display: block;
+			padding-right: 0.5rem;
 
 			a {
 				position: relative;
@@ -20,7 +21,7 @@
 				border-radius: 15px;
 
 				&.active {
-					background-color: $gray-100;
+					background-color: $gray-200;
 				}
 
 				.icon {

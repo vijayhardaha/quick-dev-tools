@@ -2,15 +2,15 @@
  * External dependancies
  */
 import { Button } from 'react-bootstrap';
-import { MdContentCut } from 'react-icons/md';
+import { MdFlip } from 'react-icons/md';
 import PropTypes from 'prop-types';
 
 export default function ClearButton({ text = '', handle }) {
 	return (
-		text.length && (
+		text.length > 0 && (
 			<div className="clear-btn">
 				<Button variant="outline-light" size="sm" onClick={() => handle('')}>
-					<MdContentCut />
+					<MdFlip />
 					&nbsp;Clear
 				</Button>
 			</div>

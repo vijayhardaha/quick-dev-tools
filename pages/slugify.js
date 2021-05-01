@@ -44,7 +44,7 @@ export default function Slugify() {
 		<Page>
 			<label className="">Output Options:</label>
 
-			<div className="d-flex align-items-center">
+			<div className="d-md-flex align-items-center">
 				<Form.Group controlId="replacement" className="check-btn-group">
 					{radios.map((radio, idx) => (
 						<Form.Check
