@@ -1,9 +1,12 @@
+/**
+ * External dependancies
+ */
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React, { Children } from 'react';
 
-const ActiveLink = ({ children, ...props }) => {
-    const activeClassName = "active";
+export default function ActiveLink({ children, ...props }) {
+	const activeClassName = 'active';
 	const { asPath } = useRouter();
 	const child = Children.only(children);
 	const childClassName = child.props.className || '';
@@ -17,6 +20,4 @@ const ActiveLink = ({ children, ...props }) => {
 			})}
 		</Link>
 	);
-};
-
-export default ActiveLink;
+}

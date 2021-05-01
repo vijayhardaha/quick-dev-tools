@@ -1,15 +1,14 @@
 /**
  * External dependancies
  */
-import { Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 import Link from 'next/link';
 
 /**
  * Internal dependancies
  */
-import Meta from '../lib/meta';
-import Sidebar from '../lib/sidebar';
 import { TOOLS } from '../lib/constants';
+import Page from '../components/page';
 
 export default function Home() {
 	const items = TOOLS.map((tool) => (
@@ -27,18 +26,10 @@ export default function Home() {
 	));
 
 	return (
-		<div className="app">
-			<Meta />
-			<div className="app-container">
-				<Sidebar />
-				<section className="app-main">
-					<div className="app-content">
-						<div className="tools-cards">
-							<Row>{items}</Row>
-						</div>
-					</div>
-				</section>
+		<Page header={false}>
+			<div className="tools-cards">
+				<Row>{items}</Row>
 			</div>
-		</div>
+		</Page>
 	);
 }

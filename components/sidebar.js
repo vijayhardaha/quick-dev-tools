@@ -8,8 +8,8 @@ import Scrollbars from 'react-custom-scrollbars-2';
 /**
  * Internal dependancies
  */
-import ActiveLink from './active-link';
-import { TOOLS } from './constants';
+import { TOOLS } from '../lib/constants';
+import ActiveLink from './link';
 
 export default function Sidebar() {
 	const scrollbars = useRef();
@@ -29,7 +29,7 @@ export default function Sidebar() {
 		<aside className="app-sidebar">
 			<div>
 				<div className="site-logo">
-					<h1>
+					<h1 className="my-0">
 						<Link href="/">
 							<a>Quick Tools</a>
 						</Link>

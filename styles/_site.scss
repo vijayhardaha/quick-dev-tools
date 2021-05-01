@@ -1,19 +1,88 @@
 .app-container {
 	display: flex;
+	max-width: 100%;
+	flex: 0 0 100%;
 }
 
 .app-main {
-	flex: 1;
-	padding-left: 380px;
+	flex-grow: 1;
+	padding-left: $sidebar-width;
+}
+
+.app-sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: $sidebar-width;
+	height: 100%;
+	box-shadow: $box-shadow-lg;
+
+	& > div {
+		height: 100%;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-bottom: 20px;
+	}
+
+	.site-logo {
+		padding: 2rem 1rem;
+		background: #f9f9fd;
+
+		h1 {
+			color: $primary;
+			font-weight: $font-weight-bolder;
+
+			a {
+				color: inherit;
+			}
+		}
+	}
+
+	.scrollbar {
+		height: calc(100vh - 162px) !important;
+	}
+
+	.nav-links {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			display: block;
+			border-bottom: 1px solid $gray-200;
+
+			a {
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				padding: 1.25rem 1rem;
+				color: $gray-600;
+
+				&.active {
+					background: #f9f9fd;
+					background: #f6f9fc;
+				}
+
+				.icon {
+					margin-right: 0.5rem;
+
+					svg {
+						width: 1.5rem;
+						height: 1.5rem;
+						display: block;
+					}
+				}
+			}
+		}
+	}
 }
 
 .page-header {
 	padding: 2rem 3rem;
-	color: $white;
-	background-image: linear-gradient(to right, #fd746c 0%, #ff9068 51%, #fd746c 100%);
+	background: #f9f9fd;
 
 	h1 {
-		margin: 0 0 1rem 0;
 		color: inherit;
 		font-weight: $font-weight-bolder;
 	}
@@ -25,64 +94,6 @@
 
 button + button {
 	margin-left: 1rem;
-}
-
-@each $color, $value in $theme-colors {
-	.btn-#{$color} {
-		border: 0;
-
-		&:hover {
-			box-shadow: none;
-		}
-
-		&:focus {
-			box-shadow: none !important;
-		}
-
-		&:active {
-			position: relative;
-			top: -2px;
-		}
-	}
-}
-
-@mixin gradient-btn($color1, $color2, $color3) {
-	transition: background-position 0.25s ease-in-out;
-	background-image: linear-gradient(to right, $color1, 0%, $color2 48%, $color3 100%);
-	background-size: 120% auto;
-
-	&:hover {
-		background-position: right center;
-	}
-}
-
-.btn-primary {
-	color: $white;
-	@include gradient-btn(#fd746c, #ff9068, #fd746c);
-}
-
-.btn-info {
-	@include gradient-btn(#56ccf2, #2f80ed, #56ccf2);
-}
-
-.btn-secondary {
-	@include gradient-btn($gray-400, $gray-300, $gray-400);
-}
-
-.btn-success {
-	@include gradient-btn(#4cb8c4, #3cd3ad, #4cb8c4);
-}
-
-.btn-warning {
-	@include gradient-btn(#fceabb, #f8b500, #fceabb);
-}
-
-.btn-danger {
-	@include gradient-btn(#ee0979, #ff6a00, #ee0979);
-}
-
-.btn-dark {
-	@include gradient-btn(#283048, #859398, #283048);
 }
 
 .check-btn-group {
@@ -121,7 +132,7 @@ button + button {
 				z-index: 2;
 				color: $white;
 				border: 0;
-				@include gradient-btn(#fd746c, #ff9068, #fd746c);
+				@extend .btn-primary;
 			}
 		}
 
@@ -129,10 +140,6 @@ button + button {
 			@extend .btn;
 			@extend .btn-sm;
 			@extend .btn-light;
-
-			&:active {
-				top: 0;
-			}
 		}
 
 		.form-check-label {
@@ -171,19 +178,18 @@ button + button {
 	.copy-btn {
 		position: absolute;
 		z-index: 1;
-		top: 0.5rem;
-		right: 0.5rem;
+		top: 1rem;
+		right: 1rem;
 		width: auto;
 		height: auto;
 
 		.btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 			padding: 0.5rem 0.825rem;
 			transition: none;
 			line-height: 1;
-
-			&:active {
-				top: 0;
-			}
 		}
 	}
 }
@@ -203,6 +209,7 @@ button + button {
 		text-align: center;
 		background: #f9f9fd;
 		color: $gray-600;
+
 		svg {
 			width: 6rem;
 			height: 6rem;
@@ -220,6 +227,6 @@ button + button {
 
 	.card-text {
 		color: $gray-600;
-		font-size: $font-size-xs;
+		font-size: $font-size-sm;
 	}
 }
