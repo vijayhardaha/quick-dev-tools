@@ -49,7 +49,7 @@ export default function PasswordGenerator() {
 		<Page>
 			<Card>
 				<Card.Body className="text-lg-center">
-					<h1 className="my-5" style={{ wordWrap: 'break-word', wordBreak: 'break-all' }}>
+					<h1 className="mb-5 mt-3" style={{ wordWrap: 'break-word', wordBreak: 'break-all' }}>
 						{password}
 					</h1>
 					<div style={{ maxWidth: 600, margin: '1.5rem auto' }}>
@@ -87,7 +87,7 @@ export default function PasswordGenerator() {
 							))}
 						</Form.Group>
 					</div>
-					<div className="mb-5">
+					<div className="mb-0">
 						<Button variant="primary" className="mb-3 mr-3" onClick={() => setPassword(generatePassword())}>
 							Generate
 						</Button>

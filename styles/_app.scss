@@ -3,14 +3,13 @@
 	display: flex;
 	flex: 0 0 100%;
 
-	@include media-breakpoint-down('lg') {
+	@include media-breakpoint-down('md') {
 		flex-direction: column;
-	}
-	&[aria-expanded='true'] {
-		@include media-breakpoint-down('lg') {
-			overflow: hidden;
-			height: 100vh;
+
+		&[aria-expanded='true'] {
 			position: relative;
+			height: 100vh;
+			overflow: hidden;
 		}
 	}
 }
@@ -32,30 +31,63 @@
 }
 
 .tools-cards {
+	display: flex;
+	flex-wrap: wrap;
+
+	@include media-breakpoint-up('sm') {
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: center;
+	}
+
+	@include media-breakpoint-down('xs') {
+		flex-direction: column;
+		justify-content: stretch;
+	}
+
 	.card {
-		flex: 0 0 100%;
-		margin-bottom: 3rem;
+		flex: 0 0 250px;
+		margin-right: 1rem;
+		margin-bottom: 2rem;
 		cursor: pointer;
 		border: 0;
-		border: 1px solid rgba($gray-100, 0.5);
+		border: 1px solid $gray-200;
 		box-shadow: 0 0.25rem 0.5625rem -0.0625rem rgba($black, 0.03), 0 0.275rem 1.25rem -0.0625rem rgba($black, 0.05);
+
+		@include media-breakpoint-down('xs') {
+			flex-direction: row;
+			align-items: stretch;
+			flex: 0 0 100%;
+			margin-right: 0;
+		}
 	}
 
 	.card-icon {
-		padding: 1.5rem;
-		text-align: center;
-		color: $gray-600;
+		height: 7rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		color: $primary;
 		background: $gray-100;
 
+		@include media-breakpoint-down('xs') {
+			flex: 0 0 7rem;
+			height: auto;
+		}
+
 		svg {
-			width: 6rem;
-			height: 6rem;
+			width: 2rem;
+			height: 2rem;
 		}
 	}
 
 	.card-body {
-		padding: 2.25rem 1.5rem;
-		text-align: center;
+		padding: 1.5rem 1rem;
+
+		@include media-breakpoint-up('sm') {
+			text-align: center;
+		}
 	}
 
 	.card-title {

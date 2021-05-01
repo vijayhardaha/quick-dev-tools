@@ -12,7 +12,7 @@
 	background: $white;
 	box-shadow: 0 1rem 3rem rgba($black, 0.1);
 
-	@include media-breakpoint-down('lg') {
+	@include media-breakpoint-down('md') {
 		transform: translate3d(-100%, 0, 0);
 
 		.app-container[aria-expanded='true'] & {
@@ -44,7 +44,7 @@
 		height: 110px;
 	}
 
-	@include media-breakpoint-down('lg') {
+	@include media-breakpoint-down('md') {
 		width: 100%;
 		box-shadow: 0 0.25rem 0.5625rem -0.0625rem rgba(0, 0, 0, 0.01), 0 0.275rem 1.25rem -0.0625rem rgba(0, 0, 0, 0.03);
 	}
